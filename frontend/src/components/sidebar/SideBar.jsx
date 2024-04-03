@@ -1,30 +1,25 @@
-import { FaMagnifyingGlass } from "react-icons/fa6";
-import Conversation from "../conversations/Conversation";
+import SearchInput from "../searchInput/searchInput";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import useLogout from "../../hooks/useLogout";
+import Conversations from "../conversations/Conversations";
 function SideBar() {
+  const { logout, loading } = useLogout();
+
   return (
-    <div className="border-r border-green-300 p-5 flex flex-col">
+    <div className=" border-r border-slate-700 p-5 flex flex-col">
+      {/* <div className="border-r border-slate-700 p-5 flex flex-col"> */}
       {/**Search input */}
-      <form className="flex items-center justify-center">
-        <input type="text" placeholder="Search..." className="p-2 rounded-2xl" />
-        <button type="submit" className=" text-white">
-          <FaMagnifyingGlass className="w-6 h-6 -ml-8" />
-        </button>
-      </form>
+      <SearchInput />
       <div className="divider px-3"></div>
       {/**Conversations */}
-
-      <div className="py-2 flex flex-col overflow-auto">
-        {/**Conversation */}
-        <Conversation />
-        <Conversation />
-        <Conversation />
-        <Conversation />
-      </div>
-
+      <Conversations />
       <div className="mt-auto">
-        <button>
-          <RiLogoutCircleLine className="w-6 h-6 text-white cursor-pointer" />
+        <button onClick={logout}>
+          {!loading ? (
+            <RiLogoutCircleLine className="w-6 h-6  cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out" />
+          ) : (
+            <span className="loading loading-spinner"></span>
+          )}{" "}
         </button>
       </div>
     </div>

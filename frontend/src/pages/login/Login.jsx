@@ -1,6 +1,17 @@
-import logo from "../../public/yahooOffline.png";
-import footer from "../../public/footer.png";
+import logo from "../../assets/yahooOffline.png";
+import footer from "../../assets/footer.png";
+import { Link } from "react-router-dom";
+import { useState } from "react";
+import useLogin from "../../hooks/useLogin";
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const { loading, login } = useLogin();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await login(username, password);
+  };
   return (
     <div className="h-80vh w-700px bg-[#F4F5EB] rounded-lg">
       {/**Topbar */}
@@ -34,17 +45,27 @@ function Login() {
             type="text"
             name="username"
             id="username"
-            className="bg-white rounded-sm  text-black "
+            className="bg-white rounded-sm  text-black p-1"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
           />
           <label htmlFor="" className=" text-black">
             Password:
           </label>
-          <input type="password" name="password" className="bg-white rounded-sm  text-black " />
+          <input
+            type="password"
+            name="password"
+            className="bg-white rounded-sm  text-black p-1"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </form>
       </div>
 
       {/** Login Options */}
-      <p className="text-blue-600 cursor-pointer mb-5 text-center">Get a new Yahoo! ID...</p>
+      <Link to="/signup">
+        <p className="text-blue-600 cursor-pointer mb-5 text-center">Get a new Yahoo! ID...</p>
+      </Link>
       <div className="flex flex-col items-center justify-center">
         <form className="flex flex-col justify-center text-left mb-2 gap-1">
           <div className="flex items-center">
@@ -69,8 +90,13 @@ function Login() {
           </div>
         </form>
 
-        <button className="mt-5 bg-[#F4F7ED] text-black rounded-lg pl-2 pr-2 p-1 border border-purple-500">
-          Sign in
+        <button
+          className="mt-5 bg-[#F4F7ED] text-black rounded-lg pl-2 pr-2 p-1 border border-purple-500 bg-gradient-to-r   hover:from-pink-500 hover:to-yellow-500 "
+          type="button"
+          onClick={handleSubmit}
+          disabled={loading}
+        >
+          {!loading ? "Sign in" : <span className="loading loading-spinner" />}
         </button>
       </div>
 

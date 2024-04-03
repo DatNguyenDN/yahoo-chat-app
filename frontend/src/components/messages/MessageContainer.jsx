@@ -1,18 +1,29 @@
+import { useEffect } from "react";
+import useConversation from "../../zustand/useConverstaion";
 import MessageInput from "./MessageInput";
 import Messages from "./Messages";
 import { TiMessages } from "react-icons/ti";
+import { useAuthContext } from "../../context/AuthContext";
 function MessageContainer() {
-  const noChatSelected = true;
+  const { authUser } = useAuthContext();
+  console.log(authUser);
+
+  const { selectedConversation, setSelectedConversation } = useConversation();
+
+  useEffect(() => {
+    //cleanup function
+    return () => setSelectedConversation(null);
+  }, [setSelectedConversation]);
   return (
     <div className="md:min-w-[450px] flex flex-col">
-      {noChatSelected ? (
-        <NoChatSelected />
+      {!selectedConversation ? (
+        <NoChatSelected authUser={authUser} />
       ) : (
         <>
           {/**Header */}
-          <div className="bg-slate-500 px-4 py-2 mb-2">
-            <span className="label-text">To:</span>
-            <span className="font-bold text-gray-800">John</span>
+          <div className="bg-gray-800 border-gray-600 px-4 py-2 mb-2  ml-2.5 flex gap-2 items-center rounded-lg">
+            <span className="label-text text-white">To:</span>
+            <span className="font-semibold text-white">{selectedConversation.fullName}</span>
           </div>
 
           <Messages />
@@ -25,15 +36,15 @@ function MessageContainer() {
 
 export default MessageContainer;
 
-function NoChatSelected() {
+function NoChatSelected({ authUser }) {
   // const { authUser } = useAuthContext();
   return (
     <div className="flex items-center justify-center w-full h-full">
-      <div className="px-4 text-center sm:text-lg md:text-xl text-white font-semibold flex flex-col items-center gap-2">
-        <p>Welcome 👋 John ❄</p>
+      <div className="px-4 text-center sm:text-lg md:text-xl  font-semibold flex flex-col items-center gap-2">
+        <p>Welcome 👋 {authUser.fullName} ❄</p>
         <p>Select a chat to start messaging</p>
 
-        <TiMessages className="text-3xl md:text-6xl text-center" />
+        <TiMessages className="text-3xl md:text-6xl text-center  " />
       </div>
     </div>
   );
