@@ -2,10 +2,11 @@ import { useEffect, useRef } from "react";
 import useGetMessages from "../../hooks/useGetMessages";
 import MessageSkeleton from "../skeleton/MessageSkeleton";
 import Message from "./Message";
+import useListenMessages from "../../hooks/useListenMessages";
 
 function Messages() {
   const { loading, messages } = useGetMessages();
-
+  useListenMessages();
   const lastMessageRef = useRef();
 
   useEffect(() => {
@@ -27,7 +28,7 @@ function Messages() {
       {loading && [...Array(3)].map((_, index) => <MessageSkeleton key={index} />)}
 
       {!loading && messages.length === 0 && (
-        <p className="text-center">Send a message to start the conversation</p>
+        <p className="text-center text-white">Send a message to start the conversation</p>
       )}
     </div>
   );

@@ -9,7 +9,11 @@ function App() {
   const { authUser } = useAuthContext();
   /**bg-gradient-to-r from-violet-200 to-pink-200 */
   return (
-    <main className="h-screen w-full p-4 flex justify-center items-center bg-gradient-to-r from-violet-200 to-pink-200  ">
+    <main
+      className="h-screen w-full p-4 flex justify-center items-center 
+    
+    "
+    >
       <Routes>
         <Route path="/" element={authUser ? <Home /> : <Navigate to="/login" />} />
         <Route path="/login" element={authUser ? <Navigate to="/" /> : <Login />} />

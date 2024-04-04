@@ -1,17 +1,22 @@
+import { useSocketContext } from "../../context/SocketContext";
 import useConversation from "../../zustand/useConverstaion";
+
 function Conversation({ conversation, emoji, lastIndex }) {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
   const isSelected = selectedConversation?._id === conversation._id;
+
+  const { onlineUsers } = useSocketContext();
+  const isOnline = onlineUsers.includes(conversation._id);
   return (
     <>
       <div
-        className={`flex justify-center items-center hover:bg-cyan-500 rounded-xl cursor-pointer gap-1 px-2 p-1 
+        className={`flex justify-center items-center hover:bg-cyan-500 rounded-xl cursor-pointer gap-1 px-2 p-1 text-white
         ${isSelected ? "bg-cyan-500" : ""}
          `}
         onClick={() => setSelectedConversation(conversation)}
       >
-        <div className="avatar online">
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full">
             <img src={conversation.profilePic} alt="user avatar" />
           </div>

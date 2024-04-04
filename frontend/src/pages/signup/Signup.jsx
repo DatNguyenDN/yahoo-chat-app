@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import signupLogo from "../../assets/signup.png";
 import useSignup from "../../hooks/useSignup";
 import { useState } from "react";
-
+import "animate.css";
 function Signup() {
   const [inputs, setInputs] = useState({
     fullName: "",
@@ -23,7 +23,7 @@ function Signup() {
     await signup(inputs);
   };
   return (
-    <div className="h-[90vh] w-[500px] bg-[#F4F5EB] rounded-lg">
+    <div className="h-[90vh] w-[500px] bg-[#F4F5EB] rounded-lg animate__animated animate__slideInRight">
       <div className="flex flex-col justify-center items-center gap-5">
         <div className="w-[150px] h-[100px]">
           <img src={signupLogo} alt="logo" className="" />
@@ -32,40 +32,46 @@ function Signup() {
         <div className="text-black w-full  mb-5 flex items-center justify-center">
           <form
             onSubmit={handleSubmit}
-            className="flex w-[60%] flex-col justify-center text-black text-left gap-5 "
+            className="flex w-[60%] flex-col justify-center text-black text-left gap-6  "
           >
-            <label>Full name</label>
-            <input
-              type="text"
-              className="bg-white"
-              value={inputs.fullName}
-              onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
-            />
+            <div className="flex flex-col">
+              <label>Full name</label>
+              <input
+                type="text"
+                className="bg-white p-1"
+                value={inputs.fullName}
+                onChange={(e) => setInputs({ ...inputs, fullName: e.target.value })}
+              />
+            </div>
+            <div className="flex flex-col">
+              <label>Yahoo Id</label>
+              <input
+                type="text"
+                className="bg-white p-1"
+                value={inputs.username}
+                onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
+              />
+            </div>
 
-            <label>Yahoo Id</label>
-            <input
-              type="text"
-              className="bg-white"
-              value={inputs.username}
-              onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
-            />
+            <div className="flex flex-col">
+              <label>Password</label>
+              <input
+                type="password"
+                className="bg-white p-1"
+                value={inputs.password}
+                onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+              />
+            </div>
 
-            <label>Password</label>
-            <input
-              type="password"
-              className="bg-white"
-              value={inputs.password}
-              onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
-            />
-
-            <label>Confirm password</label>
-            <input
-              type="password"
-              className="bg-white"
-              value={inputs.confirmPassword}
-              onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
-            />
-
+            <div className="flex flex-col">
+              <label>Confirm password</label>
+              <input
+                type="password"
+                className="bg-white p-1"
+                value={inputs.confirmPassword}
+                onChange={(e) => setInputs({ ...inputs, confirmPassword: e.target.value })}
+              />
+            </div>
             {/**Gender checkbox */}
             <div className="flex ">
               <div className="form-control">

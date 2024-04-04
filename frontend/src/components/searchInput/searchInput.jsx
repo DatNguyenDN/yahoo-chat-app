@@ -33,7 +33,7 @@ function SearchInput() {
         onChange={(e) => setSearch(e.target.value)}
       />
       <button type="submit" className=" ">
-        <FaMagnifyingGlass className="w-6 h-6 -ml-8" />
+        {search && <FaMagnifyingGlass className="w-6 h-6 -ml-8" />}
       </button>
     </form>
   );

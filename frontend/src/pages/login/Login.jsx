@@ -3,6 +3,7 @@ import footer from "../../assets/footer.png";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import useLogin from "../../hooks/useLogin";
+import "animate.css";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,8 +13,9 @@ function Login() {
     e.preventDefault();
     await login(username, password);
   };
+
   return (
-    <div className="h-80vh w-700px bg-[#F4F5EB] rounded-lg">
+    <div className="h-80vh w-700px bg-[#F4F5EB] rounded-lg animate__animated animate__slideInLeft">
       {/**Topbar */}
       <div className="w-full p-3 h-[30px] bg-purple-500 rounded-lg flex justify-center items-center text-white gap-1">
         <h2>😃</h2>
@@ -37,10 +39,8 @@ function Login() {
 
       {/**Input */}
       <div className="text-white mt-5 mb-5 flex items-center justify-center  ">
-        <form className="flex flex-col  justify-center text-left gap-2">
-          <label htmlFor="" className=" text-black">
-            Yahoo ID:
-          </label>
+        <form className="flex flex-col  justify-center text-left gap-2" onSubmit={handleSubmit}>
+          <label className=" text-black">Yahoo ID:</label>
           <input
             type="text"
             name="username"
@@ -59,6 +59,7 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <button type="submit" className="hidden"></button>
         </form>
       </div>
 
@@ -88,16 +89,16 @@ function Login() {
               Sign in as invisible to everyone
             </label>
           </div>
-        </form>
 
-        <button
-          className="mt-5 bg-[#F4F7ED] text-black rounded-lg pl-2 pr-2 p-1 border border-purple-500 bg-gradient-to-r   hover:from-pink-500 hover:to-yellow-500 "
-          type="button"
-          onClick={handleSubmit}
-          disabled={loading}
-        >
-          {!loading ? "Sign in" : <span className="loading loading-spinner" />}
-        </button>
+          <button
+            className="mt-5 bg-[#F4F7ED] text-black rounded-lg pl-2 pr-2 p-1 border border-purple-500 bg-gradient-to-r   hover:from-[#0d5975] hover:to-[#C23105] hover:text-white "
+            type="submit"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {!loading ? "Sign in" : <span className="loading loading-spinner" />}
+          </button>
+        </form>
       </div>
 
       {/**Forgot password */}
