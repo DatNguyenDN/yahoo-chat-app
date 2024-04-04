@@ -6,17 +6,17 @@ function SideBar() {
   const { logout, loading } = useLogout();
 
   return (
-    <div className=" border-r border-slate-700 p-3 flex flex-col">
+    <div className=" sm:border-r border-slate-700 p-3 flex flex-col">
       {/* <div className="border-r border-slate-700 p-5 flex flex-col"> */}
       {/**Search input */}
       <SearchInput />
-      <div className="divider px-3"></div>
+      <div className="my-1.5 sm:divider sm:px-3"></div>
       {/**Conversations */}
       <Conversations />
       <div className="mt-auto ">
         <button onClick={logout} className="">
           {!loading ? (
-            <RiLogoutCircleLine className="w-6 h-6  cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out text-white " />
+            <RiLogoutCircleLine className="w-6 h-6  cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out text-white max-sm:top-1 max-sm:right-1 max-sm:fixed hover:text-cyan-500 " />
           ) : (
             <span className="loading loading-spinner"></span>
           )}

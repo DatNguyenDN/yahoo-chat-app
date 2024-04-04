@@ -12,7 +12,7 @@ function MessageInput() {
     setmessage("");
   };
   return (
-    <form className="px-4 my-3" onSubmit={handleSubmit}>
+    <form className="max-sm:fixed bottom-0 left-0 right-0 px-4 my-3  " onSubmit={handleSubmit}>
       <div className="w-full relative">
         <input
           type="text"
