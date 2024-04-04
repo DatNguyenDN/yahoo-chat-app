@@ -1,6 +1,6 @@
 import { BsSend } from "react-icons/bs";
 import useSendMessage from "../../hooks/useSendMessage";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function MessageInput() {
   const { loading, sendMessage } = useSendMessage();
@@ -11,6 +11,10 @@ function MessageInput() {
     await sendMessage(message);
     setmessage("");
   };
+  const inputRef = useRef(null);
+  const handleTouchStart = (e) => {
+    e.preventDefault();
+  };
   return (
     <form
       className="max-sm:fixed bottom-0 left-0  right-0 px-4 my-3 mt-auto  "
@@ -20,6 +24,8 @@ function MessageInput() {
         <input
           type="text"
           className="border text-sm rounded-lg w-full p-2 block bg-gray-800 border-gray-600 text-white"
+          ref={inputRef}
+          onTouchStart={handleTouchStart}
           placeholder="Send a message"
           value={message}
           onChange={(e) => setmessage(e.target.value)}

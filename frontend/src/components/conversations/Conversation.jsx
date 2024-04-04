@@ -13,7 +13,7 @@ function Conversation({ conversation, emoji, lastIndex }) {
   return (
     <>
       <div
-        className={`flex flex-col sm:flex-row justify-center items-center hover:bg-cyan-500 rounded-xl cursor-pointer gap-1 px-2 p-1 text-white
+        className={`flex flex-col sm:flex-row justify-center items-center hover:bg-cyan-500 rounded-xl cursor-pointer gap-1 px-2 p-1  text-white
         ${isSelected ? "bg-cyan-500" : ""}
          `}
         onClick={() => setSelectedConversation(conversation)}
