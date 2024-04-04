@@ -31,7 +31,8 @@ function Conversation({ conversation, emoji, lastIndex }) {
             ) : (
               <p className="text-sm">{fullName}</p>
             )}
-            <span className="hidden">{emoji}</span>
+
+            <span className="max-sm:hidden ">{emoji}</span>
           </div>
         </div>
       </div>
