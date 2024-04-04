@@ -12,7 +12,7 @@ function MessageContainer() {
     return () => setSelectedConversation(null);
   }, [setSelectedConversation]);
   return (
-    <div className="md:min-w-[450px] flex flex-col ">
+    <div className="md:min-w-[450px] flex flex-col  animate__animated animate__fadeInRight">
       {!selectedConversation ? (
         <NoChatSelected />
       ) : (

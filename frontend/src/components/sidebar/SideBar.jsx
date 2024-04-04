@@ -6,7 +6,7 @@ function SideBar() {
   const { logout, loading } = useLogout();
 
   return (
-    <div className=" sm:border-r border-slate-700 p-3 flex flex-col">
+    <div className=" sm:border-r border-slate-700 p-3 flex flex-col ">
       {/* <div className="border-r border-slate-700 p-5 flex flex-col"> */}
       {/**Search input */}
       <SearchInput />
