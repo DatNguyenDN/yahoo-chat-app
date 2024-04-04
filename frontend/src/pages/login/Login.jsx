@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import useLogin from "../../hooks/useLogin";
 import "animate.css";
+import LoadingSpinner from "../../components/loading/LoadingSpinner";
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -96,7 +97,7 @@ function Login() {
             onClick={handleSubmit}
             disabled={loading}
           >
-            {!loading ? "Sign in" : <span className="loading loading-spinner" />}
+            {!loading ? "Sign in" : <LoadingSpinner />}
           </button>
         </form>
       </div>

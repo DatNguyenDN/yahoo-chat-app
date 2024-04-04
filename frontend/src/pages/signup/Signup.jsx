@@ -3,6 +3,7 @@ import signupLogo from "../../assets/signup.png";
 import useSignup from "../../hooks/useSignup";
 import { useState } from "react";
 import "animate.css";
+import LoadingSpinner from "../../components/loading/LoadingSpinner";
 function Signup() {
   const [inputs, setInputs] = useState({
     fullName: "",
@@ -117,7 +118,7 @@ function Signup() {
               className="mt-5 bg-[#F4F7ED] text-black rounded-lg pl-2 pr-2 p-1 border border-purple-500"
               disabled={loading}
             >
-              {!loading ? "Sign up" : <span className="loading loading-spinner" />}
+              {!loading ? "Sign up" : <LoadingSpinner />}
             </button>
           </form>
         </div>

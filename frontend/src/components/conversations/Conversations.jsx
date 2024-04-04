@@ -1,5 +1,6 @@
 import useGetConversations from "../../hooks/useGetConversations";
 import { getRandomEmoji } from "../../utils/emojis";
+import LoadingSpinner from "../loading/LoadingSpinner";
 import Conversation from "./Conversation";
 
 function Conversations() {
@@ -15,7 +16,7 @@ function Conversations() {
           lastIndex={index === conversations.length - 1}
         />
       ))}
-      {loading ? <span className="loading loading-spinner" /> : ""}
+      {loading ? <LoadingSpinner /> : ""}
     </div>
   );
 }

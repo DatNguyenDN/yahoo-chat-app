@@ -2,6 +2,7 @@ import SearchInput from "../searchInput/searchInput";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import useLogout from "../../hooks/useLogout";
 import Conversations from "../conversations/Conversations";
+import LoadingSpinner from "../loading/LoadingSpinner";
 function SideBar() {
   const { logout, loading } = useLogout();
 
@@ -18,7 +19,7 @@ function SideBar() {
           {!loading ? (
             <RiLogoutCircleLine className="w-6 h-6  cursor-pointer hover:scale-110 transition-transform duration-300 ease-in-out text-white max-sm:top-1 max-sm:right-1 max-sm:fixed hover:text-cyan-500 " />
           ) : (
-            <span className="loading loading-spinner"></span>
+            <LoadingSpinner />
           )}
         </button>
       </div>

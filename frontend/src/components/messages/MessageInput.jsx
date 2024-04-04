@@ -1,6 +1,7 @@
 import { BsSend } from "react-icons/bs";
 import useSendMessage from "../../hooks/useSendMessage";
 import { useRef, useState } from "react";
+import LoadingSpinner from "../loading/LoadingSpinner";
 
 function MessageInput() {
   const { loading, sendMessage } = useSendMessage();
@@ -31,11 +32,7 @@ function MessageInput() {
           onChange={(e) => setmessage(e.target.value)}
         />
         <button type="submit" className="absolute inset-y-0 end-0 flex items-center pe-3">
-          {!loading ? (
-            <BsSend className="text-white" />
-          ) : (
-            <span className="loading loading-spinner" />
-          )}
+          {!loading ? <BsSend className="text-white" /> : <LoadingSpinner />}
         </button>
       </div>
     </form>
